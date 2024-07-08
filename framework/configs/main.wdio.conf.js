@@ -1,5 +1,9 @@
 import path from 'node:path';
 import fs from 'fs-extra';
+import dotenv from 'dotenv';
+
+//Load environment variables from .env file
+dotenv.config();
 
 export const downloadDir = path.resolve('./tmp');
 
@@ -9,7 +13,7 @@ export const mainConfig = {
     ],
     maxInstances: 1,
     logLevel: 'warn',
-    baseUrl: '',
+    baseUrl: 'https://the-internet.herokuapp.com/',
     bail: 0,
     waitforTimeout: 0,
     connectionRetryTimeout: 120000,
@@ -23,6 +27,7 @@ export const mainConfig = {
 
     beforeTest: async function () {
         await browser.url(mainConfig.baseUrl);
+
     },
 
     onPrepare: function() {

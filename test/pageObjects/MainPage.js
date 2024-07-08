@@ -4,9 +4,10 @@ import { PreciseTextLocator } from "../../framework/utils/locatorHelper.js";
 
 class MainPage extends BasePage {
     constructor() {
-        super(new Label(PreciseTextLocator('Welcome to the-internet'), 'Welcome header'), 'Main Page');
+        super(new Label('//h1[@class="heading"]', 'Welcome header'), 'Main Page');
 
         this.navigationLink = (text) => new Button(PreciseTextLocator(text), `Navigation link: ${text}`);
+        
     };
 
     async clickNavigationLink(navigationText) {
