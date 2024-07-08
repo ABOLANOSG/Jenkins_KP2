@@ -6,13 +6,18 @@ class DropdownPage extends BasePage {
         super(new Label('//*[@class="example"]'), 'Dropdown Page');
 
         this.dropdownElement = new Dropdown('//*[@id= "dropdown"]', "Dropdown Element");
+        this.selectedOption = new Label('//*[@selected="selected"]', 'Selected option');
 
     };
 
 
-     async selectOptionDropdown() {
-        await this.dropdownElement.selectOptionByValue('2');
-     }
+     async selectOptionDropdown(value) {
+        await this.dropdownElement.selectOptionByText(value);
+     };
+
+     async getTextFromSelectedOption() {
+        return await this.selectedOption.getText();
+     };
 }
 
 export default new DropdownPage();
