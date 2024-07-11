@@ -7,13 +7,15 @@ dotenv.config();
 
 export const downloadDir = path.resolve('./tmp');
 
+
+
 export const mainConfig = {
     runner: 'local',
     exclude: [
     ],
     maxInstances: 1,
     logLevel: 'warn',
-    baseUrl: 'https://the-internet.herokuapp.com/',
+    baseUrl: 'https://www.paradoxinteractive.com/our-games/discover',
     bail: 0,
     waitforTimeout: 0,
     connectionRetryTimeout: 120000,
