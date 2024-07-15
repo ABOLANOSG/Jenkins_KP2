@@ -1,6 +1,7 @@
 import path from 'node:path';
 import fs from 'fs-extra';
 import dotenv from 'dotenv';
+import * as os from "os";
 
 //Load environment variables from .env file
 dotenv.config();
@@ -21,7 +22,22 @@ export const mainConfig = {
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
     framework: 'mocha',
-    reporters: ['spec'],
+    reporters: ['spec',
+        ['allure',
+            {
+                outputDir: 'allure-results',
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: true,
+                reportedEnvironmentVars: {
+                      os_platform: os.platform(),
+                      os_release: os.release(),
+                      os_version: os.version(),
+                      node_version: process.version
+                    }
+            },
+            
+        ]
+    ],
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
