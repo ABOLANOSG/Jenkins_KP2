@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git credentialsId: 'github-token', url: 'https://github.com/ABOLANOSG/Jenkins_KP2.git', branch: 'allure_practice'
             }
         }
         stage('Install Dependencies') {
