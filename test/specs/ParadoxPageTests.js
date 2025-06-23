@@ -1,6 +1,6 @@
 import DiscoverPage from "../pageObjects/ParadoxPages/DiscoverPage.js";
 import AllGamesPage from "../pageObjects/ParadoxPages/AllGamesPage.js";
-import {searchedGames} from "../TestData/TestDataParadox.js";
+import {searchedGames, testData} from "../TestData/TestDataParadox.js";
 import { assert } from "chai";
 import Browser from "../../framework/browser/Browser.js";
 import allureReporter from "@wdio/allure-reporter";
@@ -21,5 +21,12 @@ describe('Interactions with Paradox Page', function () {
         allureReporter.addStep("Assert game title is correct");
         assert.strictEqual(await AllGamesPage.getTextFromGameTitle(), searchedGames.page);
 
+    });
+
+    testData.forEach(({a, b, expected}) => {
+        it(`Should return ${expected} for ${a} + ${b}`, function () {
+            const result = a+b;
+            assert.strictEqual(result, expected, `Test failed actual result: ${result}, does not match with expected: ${expected}`);
+        });
     });
 })
