@@ -2,6 +2,7 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import dotenv from 'dotenv';
 import * as os from "os";
+import allureReporter from '@wdio/allure-reporter';
 
 //Load environment variables from .env file
 dotenv.config();
@@ -58,7 +59,8 @@ export const mainConfig = {
 
     afterTest: async function (test, context, { error, result, duration, passed, retries }) {
         if (!passed) {
-            await browser.takeScreenshot();
+            const screenshot = await browser.takeScreenshot();
+            allureReporter.addAttachment('Screenshot', Buffer.from(screenshot, 'base64'), 'image/png');
         }
     },
 

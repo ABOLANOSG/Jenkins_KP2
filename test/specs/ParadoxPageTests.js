@@ -10,12 +10,16 @@ describe('Interactions with Paradox Page', function () {
         allureReporter.addOwner('Astrid Andrea Bolanos Garcia');
         allureReporter.addLink('https://github.com/a1qa-education/A.BOLANOS/tree/unit_3_mentor_survey');
         allureReporter.addSeverity('Major');
+        allureReporter.addStep("Resize window");
         await Browser.Window.resize({ width: 1920, height: 1024 });
+        allureReporter.addStep("Verify if discover page is open");
         assert.isTrue(await DiscoverPage.isPageOpened(), 'Discover Page is not open');
+        allureReporter.addStep("Click all game button");
         await DiscoverPage.clickOnAllGamesButton();
-
+        allureReporter.addStep("insert input and check title");
         await AllGamesPage.insertInputSearch(searchedGames.page);
+        allureReporter.addStep("Assert game title is correct");
         assert.strictEqual(await AllGamesPage.getTextFromGameTitle(), searchedGames.page);
 
-    })
+    });
 })
