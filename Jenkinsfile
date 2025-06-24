@@ -13,21 +13,27 @@ pipeline {
                 git credentialsId: 'github-token', url: 'https://github.com/ABOLANOSG/Jenkins_KP2.git', branch: 'allure_practice'
             }
         }
+        stage ('Check Node Version') {
+            steps {
+                bat 'node -v'
+                bat 'npm -v'
+            }
+        }
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'npm test'
+                bat 'npm test'
             }
         }
 
         stage('Generate Allure Report') {
             steps {
-                sh 'npx allure generate allure-results --clean -o allure-report'
+                bat 'npx allure generate allure-results --clean -o allure-report'
             }
         }
 
