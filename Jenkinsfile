@@ -1,10 +1,8 @@
 pipeline {
     agent any
-    tools {
-        nodejs 'NodeJS 18'
-    }
 
     environment {
+        PATH = 'C:\\Program Files\\nodejs\\node.exe'
         ALLURE_RESULTS_DIR = 'allure-results'
         ALLURE_REPORT_DIR = 'allure-report'
     }
