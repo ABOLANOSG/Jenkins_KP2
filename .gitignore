@@ -129,6 +129,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Allure files
+# Ignore results from allure report 
 allure-results/
 allure-report/
