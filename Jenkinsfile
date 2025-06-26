@@ -4,6 +4,9 @@ pipeline {
         nodejs 'NodeJS default'
     }
 
+    parameters{
+        string(name:'edge', defaultValue: 'edge' )
+    }
     environment {
         ALLURE_RESULTS_DIR = 'allure-results'
         ALLURE_REPORT_DIR = 'allure-report'
@@ -12,7 +15,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'github-token', url: 'https://github.com/ABOLANOSG/Jenkins_KP2.git', branch: 'allure_practice'
+                git credentialsId: 'github-token', url: 'https://github.com/ABOLANOSG/Jenkins_KP2.git'
             }
         }
         stage('Install Dependencies') {
@@ -23,7 +26,8 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                if (params.edge = "edge") {
+                    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                     powershell 'npm test'
                 }
             }

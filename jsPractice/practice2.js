@@ -69,3 +69,4 @@ for (const mayor of grouped.mayores) {
 for (const menor of grouped.menores) {
     console.log(`esta persona esta en el grupo de los menores ${menor.name}`);
 }
+
