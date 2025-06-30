@@ -1,1 +1,0 @@
-## Jenkins_practice with allure# test suite with pipelines

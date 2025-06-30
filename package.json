@@ -2,10 +2,7 @@
   "name": "a1qa-wdio-framework",
   "type": "module",
   "scripts": {
-    "test": "wdio run ./configs/chrome.mocha.conf.js",
-    "test:Dropdown": "wdio run ./configs/chrome.mocha.conf.js --spec ./test/specs/DropdownPageTest.js",
-    "test:Authentication": "wdio run ./configs/chrome.mocha.conf.js --spec ./test/specs/LoginAuthTest.js",
-    "test:Paradox": "wdio run ./configs/chrome.mocha.conf.js --spec ./test/specs/ParadoxPageTests.js"
+    "test": "wdio run ./configs/chrome.mocha.conf.js"
   },
   "dependencies": {
     "@babel/core": "^7.24.3",
