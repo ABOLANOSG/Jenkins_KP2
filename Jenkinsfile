@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+    parameters {
+        choice(name: 'BROWSER', choices: ['chrome', 'edge'], description: 'Choose your browser')
+    }
+
     tools {
         nodejs 'NodeJS default'
     }
@@ -24,7 +29,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                    powershell 'npm test'
+                    powershell "BROWSER=${params.BROWSER} npm test"
                 }
             }
         }
