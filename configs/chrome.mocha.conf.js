@@ -11,7 +11,6 @@ export const config = {
         capabilities: [
             {
                 browserName: browserName,
-                browserVersion: '126.0.6478.127',
                 "goog:chromeOptions": {
                     args: [
                         '--headless',
