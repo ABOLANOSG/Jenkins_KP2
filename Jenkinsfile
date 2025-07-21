@@ -29,7 +29,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                    powershell "BROWSER=${params.BROWSER} npm test"
+                    powershell '$env:BROWSER = "${params.BROWSER}"; npm test'
                 }
             }
         }
