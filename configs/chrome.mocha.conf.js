@@ -13,7 +13,7 @@ export const config = {
                 browserName: browserName,
                 browserVersion: '126.0.6478.127',
                 "goog:chromeOptions": {
-                    args: ['--disable-blink-features=Autofill'],
+                    args: ['--headless, --disable-blink-features=Autofill'],
                     prefs: {
                         "download.default_directory": downloadDir,
                         'intl.accept_languages': 'en,en_US'
