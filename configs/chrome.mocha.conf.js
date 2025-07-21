@@ -9,33 +9,37 @@ export const config = {
             '../test/specs/**/*.js'
         ],
         capabilities: [
-            {
-                browserName: browserName,
-                "goog:chromeOptions": {
-                    args: [
-                        '--headless',
-                        '--disable-gpu',
-                        '--disable-blink-features=Autofill',
-                        '--window-size=1920,1080'
-                    ],
-                    prefs: {
-                        "download.default_directory": downloadDir,
-                        'intl.accept_languages': 'en,en_US'
-                    }
-                },
-                ...(browserName === "edge" && {
+            browserName === "edge"
+                ? {
+                    browserName: "MicrosoftEdge",
                     "ms:edgeOptions": {
-                        args: ['--disable-blink-features=Autofill',
+                        args: [
                             '--headless',
                             '--disable-gpu',
+                            '--disable-blink-features=Autofill',
+                            '--window-size=1920,1080'
                         ],
                         prefs: {
                             "download.default_directory": downloadDir,
                             'intl.accept_languages': 'en,en_US'
                         }
                     }
-                })
-            },
+                }
+                : {
+                    browserName: "chrome",
+                    "goog:chromeOptions": {
+                        args: [
+                            '--headless',
+                            '--disable-gpu',
+                            '--disable-blink-features=Autofill',
+                            '--window-size=1920,1080'
+                        ],
+                        prefs: {
+                            "download.default_directory": downloadDir,
+                            'intl.accept_languages': 'en,en_US'
+                        }
+                    }
+                }
         ],
     },
 };
