@@ -13,7 +13,12 @@ export const config = {
                 browserName: browserName,
                 browserVersion: '126.0.6478.127',
                 "goog:chromeOptions": {
-                    args: ['--headless, --disable-blink-features=Autofill'],
+                    args: [
+                        '--headless',
+                        '--disable-gpu',
+                        '--disable-blink-features=Autofill',
+                        '--window-size=1920,1080'
+                    ],
                     prefs: {
                         "download.default_directory": downloadDir,
                         'intl.accept_languages': 'en,en_US'
@@ -21,7 +26,10 @@ export const config = {
                 },
                 ...(browserName === "edge" && {
                     "ms:edgeOptions": {
-                        args: ['--disable-blink-features=Autofill'],
+                        args: ['--disable-blink-features=Autofill',
+                            '--headless',
+                            '--disable-gpu',
+                        ],
                         prefs: {
                             "download.default_directory": downloadDir,
                             'intl.accept_languages': 'en,en_US'
