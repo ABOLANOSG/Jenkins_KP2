@@ -1,6 +1,6 @@
 import { downloadDir, mainConfig } from "../framework/configs/main.wdio.conf.js";
 
-const browserName = process.env.BROWSER;
+//const browserName = process.env.BROWSER;
 
 export const config = {
     ...mainConfig,
@@ -10,10 +10,10 @@ export const config = {
         ],
         capabilities: [
             {
-                    browserName: "MicrosoftEdge",
+                    browserName: "msedgedriver",
                     "ms:edgeOptions": {
                         args: [
-                            '--headless',
+                            
                             '--disable-gpu',
                             '--disable-blink-features=Autofill',
                             '--window-size=1920,1080'
