@@ -1,12 +1,19 @@
 export default class LazyDate {
   constructor() {
-    this._date = null;
+    this.date = null;
   }
 
-  get value() {
-    if (!this._date) {
-      this._date = new Date();
+ async delay(ms) {
+  console.log("Loading heavy data...");
+return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+   async getValue() {
+    if (!this.date) {
+      console.log("Initializing resource...");
+      await this.delay(2000);
+      this.date = new Date();
     }
-    return this._date;
+    return this.date;
   }
 }

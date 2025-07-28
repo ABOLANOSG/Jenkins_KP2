@@ -1,23 +1,27 @@
 import DummyUser from "../utils/DummyUser.js";
 
-class SingletonPool {
+export default class UserPool {
     constructor() {
-        if (!SingletonPool.instance) {
-            this.user = null;
-            SingletonPool.instance = this;
+        const poolSize = 1;
+        if (!UserPool.instance) {
+            this.poolUsers = [];
+            for(let i = 0; i < poolSize; i++) {
+                this.poolUsers.push(new DummyUser(i));
+            }
+
+            UserPool.instance = this;
+            return UserPool.instance;
         }
-        return SingletonPool.instance;
+
+        return UserPool.instance;
     }
 
     getUser() {
-        if (!this.user) {
-            this.user = new DummyUser();
-        }
-        return this.user;
+     return this.poolUsers[0];
+    }
+
+    getUserId() {
+        return this.poolUsers[0].getId();
     }
 
 }
-
-const singletonPoolInstance = new SingletonPool();
-
-export default singletonPoolInstance;
