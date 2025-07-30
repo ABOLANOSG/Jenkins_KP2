@@ -1,6 +1,6 @@
 import { downloadDir, mainConfig } from "../framework/configs/main.wdio.conf.js";
 
-const browserName = process.env.BROWSER || "chrome";
+let browserName = process.env.BROWSER || "chrome";
 
 export const config = {
     ...mainConfig,
