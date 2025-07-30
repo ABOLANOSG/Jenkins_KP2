@@ -9,8 +9,6 @@ dotenv.config();
 
 export const downloadDir = path.resolve('./tmp');
 
-
-
 export const mainConfig = {
     runner: 'local',
     exclude: [

@@ -9,11 +9,27 @@ export const config = {
             '../test/specs/**/*.js'
         ],
         capabilities: [
-            {
-                    browserName: "msedgedriver",
+            browserName === "edge"
+            ? {
+                    browserName: "edge",
                     "ms:edgeOptions": {
                         args: [
                             
+                            '--disable-gpu',
+                            '--disable-blink-features=Autofill',
+                            '--window-size=1920,1080'
+                        ],
+                        prefs: {
+                            "download.default_directory": downloadDir,
+                            'intl.accept_languages': 'en,en_US'
+                        }
+                    }
+                }
+                : {
+                    browserName: "chrome",
+                    "goog:chromeOptions": {
+                        args: [
+                            '--headless',
                             '--disable-gpu',
                             '--disable-blink-features=Autofill',
                             '--window-size=1920,1080'
