@@ -11,7 +11,7 @@ export const config = {
         capabilities: [
             browserName === "edge"
             ? {
-                    browserName: "microsoftedge",
+                    browserName: "msedge",
                     "ms:edgeOptions": {
                         args: [
                             
