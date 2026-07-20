@@ -15,6 +15,12 @@ describe('Interactions with Paradox Page', function () {
         allureReporter.addStep("Verify if discover page is open");
         assert.isTrue(await DiscoverPage.isPageOpened(), 'Discover Page is not open');
         allureReporter.addStep("Click all game button");
+        const screenshot = await browser.takeScreenshot();
+        allureReporter.addAttachment(
+            'Current Page',
+            Buffer.from(screenshot, 'base64'),
+            'image/png'
+        )
         await DiscoverPage.clickOnAllGamesButton();
         allureReporter.addStep("insert input and check title");
         await AllGamesPage.insertInputSearch(searchedGames.page);
@@ -29,4 +35,10 @@ describe('Interactions with Paradox Page', function () {
             assert.strictEqual(result, expected, `Test failed actual result: ${result}, does not match with expected: ${expected}`);
         });
     });
-})
+});
+
+describe('failed test', async function() {
+    it('Test meant to fail', async function() {
+        assert.strictEqual(2, 10, 'mock test fail');
+    });
+});

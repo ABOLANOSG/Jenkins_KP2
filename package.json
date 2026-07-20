@@ -5,7 +5,9 @@
     "test": "wdio run ./configs/chrome.mocha.conf.js",
     "test:Dropdown": "wdio run ./configs/chrome.mocha.conf.js --spec ./test/specs/DropdownPageTest.js",
     "test:Authentication": "wdio run ./configs/chrome.mocha.conf.js --spec ./test/specs/LoginAuthTest.js",
-    "test:Paradox": "wdio run ./configs/chrome.mocha.conf.js --spec ./test/specs/ParadoxPageTests.js"
+    "test:Paradox": "wdio run ./configs/chrome.mocha.conf.js --spec ./test/specs/ParadoxPageTests.js",
+    "generate:allure": "npx allure generate allure-results --clean -o allure-report",
+    "open:allure": "allure open allure-report"
   },
   "dependencies": {
     "@babel/core": "^7.24.3",
