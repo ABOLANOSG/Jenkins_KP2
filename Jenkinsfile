@@ -45,7 +45,7 @@ pipeline {
                 allure([
                     includeProperties: false,
                     jdk: '',
-                    results: [[path: 'allure-results']] 
+                    results: [[path: 'allure-results']],
                 ])
             }
         }
@@ -53,7 +53,12 @@ pipeline {
     
     post {
         always {
-            echo 'Pipeline finished.'
+            echo 'Pipeline finished.',
+            archiveArtifacts(
+                artifacts: 'allure-results/**/*,allure-report/**/*',
+                allowEmptyArchive: true,
+                fingerprint: true
+            )
         }
         success {
             echo 'Tests Passed!'
