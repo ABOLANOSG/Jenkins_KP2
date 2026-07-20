@@ -53,7 +53,7 @@ pipeline {
     
     post {
         always {
-            echo 'Pipeline finished.',
+            echo 'Pipeline finished.'
             archiveArtifacts(
                 artifacts: 'allure-results/**/*,allure-report/**/*',
                 allowEmptyArchive: true,
