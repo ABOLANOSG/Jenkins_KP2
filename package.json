@@ -2,7 +2,20 @@
   "name": "a1qa-wdio-framework",
   "type": "module",
   "scripts": {
-    "test": "wdio run ./configs/chrome.mocha.conf.js"
+    "test": "mocha \"test/specs/**/*.js\"",
+    "test:observer": "mocha test/specs/observerTests.js",
+    "test:proxy": "mocha test/specs/proxyTest.js",
+    "test:dependencyInjection": "mocha test/specs/dependencyInjectionTests.js",
+    "test:prototype": "mocha test/specs/prototypeTests.js",
+    "test:decorator": "mocha test/specs/decoratorTest.js",
+    "test:facade": "mocha test/specs/facadeTests.js",
+    "test:creational": "mocha test/specs/abstractFactoryTest.js test/specs/prototypeTest.js",
+    "test:structural": "mocha test/specs/proxyTest.js test/specs/decoratorTest.js test/specs/facadeTest.js",
+    "test:behavioral": "mocha test/specs/observerTest.js",
+    "test:selected-patterns": "mocha test/specs/observerTest.js test/specs/abstractFactoryTest.js test/specs/proxyTest.js test/specs/dependencyInjectionTest.js test/specs/prototypeTest.js test/specs/decoratorTest.js test/specs/facadeTest.js",
+    "test:browser": "wdio run ./configs/chrome.mocha.conf.js",
+    "test:abstractFactory": "mocha test/specs/abstractFactoryTests.js",
+    "test:mediator": "mocha test/specs/mediatorTests.js"
   },
   "dependencies": {
     "@babel/core": "^7.24.3",
@@ -18,5 +31,8 @@
     "dotenv": "^16.4.5",
     "fs-extra": "^11.2.0",
     "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "mocha": "^11.7.6"
   }
 }
